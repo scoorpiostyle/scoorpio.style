@@ -1,50 +1,813 @@
-```html
+
 <!DOCTYPE html>
 <html lang="es">
+<head>
+    <style>
+    body {
+        background-color: black;
+        color: white;
+        /* ========================================
+   CONFIGURACIÓN GENERAL
+======================================== */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: #0b0b0b;
+    color: #ffffff;
+    line-height: 1.6;
+}
+
+
+/* ========================================
+   BARRA DE NAVEGACIÓN
+======================================== */
+
+header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+
+    background-color: rgba(11, 11, 11, 0.95);
+    border-bottom: 1px solid #292929;
+}
+
+.navbar {
+    max-width: 1200px;
+    margin: auto;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    padding: 20px 30px;
+}
+
+.logo {
+    font-size: 24px;
+    font-weight: bold;
+    letter-spacing: 2px;
+    text-transform: lowercase;
+}
+
+.menu {
+    display: flex;
+    list-style: none;
+    gap: 30px;
+}
+
+.menu a {
+    color: #ffffff;
+    text-decoration: none;
+
+    font-size: 14px;
+    font-weight: bold;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+
+    transition: 0.3s;
+}
+
+.menu a:hover {
+    color: #999999;
+}
+
+
+/* ========================================
+   SECCIÓN PRINCIPAL / HERO
+======================================== */
+
+.hero {
+    min-height: 100vh;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    text-align: center;
+
+    padding: 120px 20px 80px;
+
+    background:
+        linear-gradient(
+            rgba(0, 0, 0, 0.65),
+            rgba(0, 0, 0, 0.85)
+        ),
+        radial-gradient(
+            circle at center,
+            #303030 0%,
+            #0b0b0b 65%
+        );
+}
+
+.hero-text {
+    max-width: 850px;
+}
+
+.subtitulo {
+    font-size: 13px;
+    letter-spacing: 5px;
+    color: #aaaaaa;
+    margin-bottom: 20px;
+}
+
+.hero h1 {
+    font-size: clamp(60px, 12vw, 150px);
+    line-height: 0.9;
+
+    font-weight: 900;
+    letter-spacing: -5px;
+
+    text-transform: lowercase;
+
+    margin-bottom: 30px;
+}
+
+.hero h2 {
+    font-size: clamp(25px, 4vw, 45px);
+    margin-bottom: 25px;
+}
+
+.hero p {
+    max-width: 650px;
+    margin: 0 auto 35px;
+
+    color: #c7c7c7;
+    font-size: 18px;
+}
+
+
+/* ========================================
+   BOTONES
+======================================== */
+
+.boton {
+    display: inline-block;
+
+    padding: 16px 32px;
+
+    background-color: #ffffff;
+    color: #000000;
+
+    text-decoration: none;
+
+    font-size: 13px;
+    font-weight: bold;
+    letter-spacing: 2px;
+
+    border: 2px solid #ffffff;
+
+    transition: 0.3s;
+}
+
+.boton:hover {
+    background-color: transparent;
+    color: #ffffff;
+}
+
+
+/* ========================================
+   SECCIONES GENERALES
+======================================== */
+
+.seccion {
+    padding: 120px 20px;
+    border-top: 1px solid #222222;
+}
+
+.contenido {
+    max-width: 1000px;
+    margin: auto;
+}
+
+.etiqueta {
+    font-size: 12px;
+    font-weight: bold;
+
+    letter-spacing: 4px;
+
+    color: #888888;
+
+    margin-bottom: 15px;
+}
+
+.seccion h2 {
+    font-size: clamp(40px, 7vw, 75px);
+    line-height: 1;
+
+    margin-bottom: 40px;
+
+    text-transform: uppercase;
+}
+
+.seccion p {
+    max-width: 800px;
+
+    font-size: 18px;
+    color: #c6c6c6;
+
+    margin-bottom: 20px;
+}
+
+
+/* ========================================
+   PROYECTO
+======================================== */
+
+.proyecto {
+    background-color: #111111;
+}
+
+.destacado {
+    font-size: 28px !important;
+    color: #ffffff !important;
+    font-weight: bold;
+
+    border-left: 4px solid #ffffff;
+
+    padding-left: 20px;
+
+    margin-bottom: 40px !important;
+}
+
+
+/* ========================================
+   TARJETAS
+======================================== */
+
+.tarjetas {
+    display: grid;
+
+    grid-template-columns: repeat(3, 1fr);
+
+    gap: 20px;
+
+    margin-top: 60px;
+}
+
+.tarjeta {
+    background-color: #191919;
+
+    border: 1px solid #292929;
+
+    padding: 35px 25px;
+
+    transition: 0.3s;
+}
+
+.tarjeta:hover {
+    transform: translateY(-8px);
+    border-color: #777777;
+}
+
+.tarjeta h3 {
+    font-size: 20px;
+
+    margin-bottom: 20px;
+
+    letter-spacing: 1px;
+}
+
+.tarjeta p {
+    font-size: 15px !important;
+    margin-bottom: 0 !important;
+}
+
+
+/* ========================================
+   INFORMACIÓN DEL PERFIL
+======================================== */
+
+.perfil-info {
+    display: grid;
+
+    grid-template-columns: repeat(2, 1fr);
+
+    gap: 1px;
+
+    margin-top: 60px;
+
+    background-color: #333333;
+}
+
+.perfil-info > div {
+    background-color: #0b0b0b;
+
+    padding: 35px;
+}
+
+.perfil-info span {
+    display: block;
+
+    font-size: 12px;
+
+    color: #777777;
+
+    margin-bottom: 15px;
+}
+
+.perfil-info h3 {
+    font-size: 25px;
+
+    margin-bottom: 10px;
+}
+
+.perfil-info p {
+    font-size: 15px !important;
+
+    margin-bottom: 0 !important;
+}
+
+
+/* ========================================
+   FRASE DESTACADA
+======================================== */
+
+.frase {
+    min-height: 60vh;
+
+    display: flex;
+
+    flex-direction: column;
+
+    justify-content: center;
+
+    align-items: center;
+
+    text-align: center;
+
+    padding: 80px 20px;
+
+    background-color: #070707;
+
+    color: #f8f7f7;
+}
+
+.frase h2 {
+    max-width: 900px;
+
+    font-size: clamp(35px, 6vw, 70px);
+
+    line-height: 1.05;
+
+    text-transform: uppercase;
+}
+
+.frase p {
+    margin-top: 30px;
+
+    font-size: 14px;
+
+    font-weight: bold;
+
+    letter-spacing: 4px;
+}
+
+
+/* ========================================
+   CONTACTO
+======================================== */
+
+.contacto {
+    text-align: center;
+}
+
+.contacto .contenido {
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+}
+
+.contacto .etiqueta {
+    margin-bottom: 15px;
+}
+
+.contacto h2 {
+    margin-bottom: 30px;
+}
+
+.contacto p {
+    margin-bottom: 35px;
+}
+
+.redes {
+    display: flex;
+
+    justify-content: center;
+
+    gap: 15px;
+}
+
+.redes a {
+    display: inline-block;
+
+    padding: 15px 30px;
+
+    border: 1px solid #ffffff;
+
+    color: #ffffff;
+
+    text-decoration: none;
+
+    font-weight: bold;
+
+    letter-spacing: 1px;
+
+    transition: 0.3s;
+}
+
+.redes a:hover {
+    background-color: #ffffff;
+    color: #000000;
+}
+
+
+/* ========================================
+   PIE DE PÁGINA
+======================================== */
+
+footer {
+    border-top: 1px solid #292929;
+
+    padding: 30px 20px;
+
+    display: flex;
+
+    justify-content: space-between;
+
+    max-width: 100%;
+
+    color: #777777;
+
+    font-size: 13px;
+}
+
+footer p {
+    margin: 0;
+}
+
+
+/* ========================================
+   RESPONSIVE / CELULAR
+======================================== */
+
+@media (max-width: 768px) {
+
+    .navbar {
+        flex-direction: column;
+        gap: 15px;
+        padding: 15px 20px;
+    }
+
+    .menu {
+        gap: 15px;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .menu a {
+        font-size: 11px;
+    }
+
+    .hero {
+        padding-top: 160px;
+    }
+
+    .hero h1 {
+        letter-spacing: -3px;
+    }
+
+    .hero p {
+        font-size: 16px;
+    }
+
+    .seccion {
+        padding: 80px 20px;
+    }
+
+    .tarjetas {
+        grid-template-columns: 1fr;
+    }
+
+    .perfil-info {
+        grid-template-columns: 1fr;
+    }
+
+    .frase {
+        min-height: 50vh;
+    }
+
+    footer {
+        flex-direction: column;
+        text-align: center;
+        gap: 10px;
+    }
+}
+
+
+/* ========================================
+   CELULARES PEQUEÑOS
+======================================== */
+
+@media (max-width: 480px) {
+
+    .logo {
+        font-size: 20px;
+    }
+
+    .menu {
+        gap: 10px;
+    }
+
+    .hero h1 {
+        font-size: 55px;
+    }
+
+    .boton {
+        padding: 14px 20px;
+    }
+
+    .seccion h2 {
+        font-size: 42px;
+    }
+
+    .tarjeta {
+        padding: 25px 20px;
+    }
+
+}
+    }
+</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Scoorpio.Style
+
+    <link rel="stylesheet" href="style.css">
+</head>
+<!DOCTYPE html>
+<html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Mi página web</title>
+    <title>Scoorpio.Style | Portafolio</title>
 
     <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
+    <!-- ENCABEZADO -->
+
     <header>
-        <h1>Mi página web</h1>
-        <p>Bienvenidos a mi página ✨</p>
+
+        <nav class="navbar">
+
+            <div class="logo">
+                Scoorpio.Style
+            </div>
+
+            <ul class="menu">
+                <li><a href="#Inicio">Inicio</a></li>
+                <li><a href="#Visión">Visión</a></li>
+                <li><a href="#Productos">Productos</a></li>
+                <li><a href="#Contacto">Contacto</a></li>
+            </ul>
+
+        </nav>
+
     </header>
+
+
+    <!-- INICIO -->
 
     <main>
 
-        <section class="presentacion">
-            <h2>¡Hola!</h2>
-            <p>
-                Este es el contenido de mi página web.
-                Aquí puedo poner textos, imágenes, botones y mucho más.
-            </p>
+        <section id="inicio" class="hero">
+
+            <div class="hero-text">
+
+                <p class="subtitulo">
+                    CONCEPCIÓN · CHILE
+                </p>
+
+                <h1>
+                    scoorpio.style
+                </h1>
+
+                <h2>
+                    Streetwear con identidad.
+                </h2>
+
+                <p>
+                    Un proyecto nacido en Concepción, creado para
+                    expresar identidad, actitud y una forma diferente
+                    de entender la moda urbana.
+                </p>
+
+                <a href="#proyecto" class="boton">
+                    CONOCER EL PROYECTO
+                </a>
+
+            </div>
+
         </section>
 
-        <section class="botones">
 
-            <a href="#" class="boton">
-                Botón 1
-            </a>
+        <!-- BIOGRAFÍA -->
 
-            <a href="#" class="boton">
-                Botón 2
-            </a>
+                </h2>
+
+                <p>
+                    Scoorpio.Style, es un proyecto
+                    nacido en Concepción, Chile, desde la pasión por
+                    el streetwear, la creatividad y la expresión
+                    personal.
+                </p>
+
+                <p>
+                    Desde el comienzo, mi objetivo ha sido construir
+                    una propuesta con identidad propia, combinando
+                    la moda urbana con personalidad, actitud y
+                    autenticidad.
+                </p>
+
+                <p>
+                    Crear Scoorpio.Style también significa abrirme
+                    camino como mujer dentro de una industria que
+                    históricamente ha estado marcada por la presencia
+                    masculina.
+                </p>
+
+                <p>
+                    Para mí, este proyecto representa mucho más que
+                    una tienda. Representa la oportunidad de crear,
+                    liderar y demostrar que las mujeres también podemos
+                    ocupar espacios, tomar decisiones y construir
+                    proyectos dentro de la industria de la moda.
+                </p>
+
+            </div>
+
+        </section>
+
+
+        <!-- PROYECTO -->
+
+        <section id="proyecto" class="seccion proyecto">
+
+            <div class="contenido">
+
+
+                <h2>
+                    scoorpio.style
+                </h2>
+
+                <p class="destacado">
+                    Un proyecto streetwear de Concepción,
+                    liderado por una mujer.
+                </p>
+
+
+                <div class="tarjetas">
+
+                    <article class="tarjeta">
+
+                        <h3>
+
+                    </article>
+
+
+                    </article>
+
+
+                    <article class="tarjeta">
+
+                        <h3>
+                    
+                        </h3>
+
+                        <p>
+                            Un proyecto liderado por una mujer
+                            dentro de una industria históricamente
+                            masculina.
+                        </p>
+
+                    </article>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- PERFIL -->
+
+        <section id="perfil" class="seccion">
+
+            <div class="contenido">
+
+                <p class="etiqueta">
+                    PERFIL
+                </p>
+
+                <h2>
+                    ¿Qué es scoorpio.style?
+                </h2>
+
+                <p>
+                    scoorpio.style es una tienda y proyecto de
+                    streetwear nacido en Concepción, Chile.
+                </p>
+
+                <p>
+                    La marca busca entregar una propuesta de moda
+                    urbana que combine estilo, personalidad y
+                    autenticidad.
+                </p>
+
+                <p>
+                    Más que una tienda, scoorpio.style busca construir
+                    una identidad y una comunidad alrededor de la
+                    moda urbana, la creatividad y la libertad de
+                    expresarse.
+                </p>
+
+        <section class="frase">
+
+            <h2>
+                No se trata de encajar.
+                Se trata de crear tu propio estilo.
+
+
+        </section>
+
+
+        <!-- CONTACTO -->
+
+        <section id="contacto" class="seccion contacto">
+
+            <div class="contenido">
+
+                <p class="etiqueta">
+                    CONTACTO
+                </p>
+
+                </h2>
+
+                <p>
+                    Conoce más sobre scoorpio.style y sigue el
+                    proyecto a través de nuestras redes sociales.
+                </p>
+
+                <div class="redes">
+
+                    <a
+                        href="https://www.instagram.com/scoorpio.style/"
+                        target="_blank"
+                        rel="noopener noreferrer">
+                        Instagram
+                    </a>
+
+                </div>
+
+            </div>
 
         </section>
 
     </main>
 
+
+    <!-- PIE DE PÁGINA -->
+
     <footer>
-        <p>© 2026 Mi página web</p>
+
+        <p>
+            © 2026 scoorpio.style
+        </p>
+
+        <p>
+            Concepción · Chile
+        </p>
+
     </footer>
 
 </body>
+
 </html>
-```
